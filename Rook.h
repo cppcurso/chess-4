@@ -19,16 +19,20 @@ public:
 		this->x=x;
 		this->y=y;
 	}
-	Rook(){
-	if (black==true) {
-		figure='r';
-		x =countRook*7;
-		y=7;
-		countRook=0;
+	Rook(bool black) {
+		this->black=black;
+		if (black==true) {
+			countRook--;
+			figure='r';
+			x =countRook*7;
+			y=0;
+
+		}
+		else if (black==false) {
+			figure='R';
+			x = countRook*7;
+			y = 7;
+			countRook++;
+		}
 	}
-	else if (black==false) {
-		figure='R';
-		x = countRook*7;
-		y = 0;
-		countRook++;
 };

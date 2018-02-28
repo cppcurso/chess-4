@@ -29,19 +29,22 @@ public:
 		this->y = y;
 	}
 
-	Bishop(){
+	Bishop(bool black) {
+		this->black=black;
 		if (black==true) {
+			countBishop--;
 			figure='b';
 			x =5- countBishop*3;
-			y=7;
-			countBishop--;
+			y=0;
+
 		}
 		else if (black==false) {
-			figure='P';
+			figure='B';
 			x = 2+ countBishop*3;
-			y = 0;
+			y = 7;
 			countBishop++;
 		}
+	}
 };
 
 #endif /* BISHOP_H_ */

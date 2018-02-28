@@ -18,7 +18,7 @@ public:
 void initBoard() {
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
-    	pieces[i][j] = 'X';
+    	pieces[i][j] = '-';
     }
   }
 }
@@ -33,32 +33,48 @@ void initBoard() {
   cout <<endl;
   }
 }
-void fillArray()
+void fillArrayWhite()
  {
   for (size_t i = 0; i < 14; i++)
   {
     if (i<8) {
-      whitePieces[i]=Pawn();
-      blackPieces[i]=Pawn();
+      whitePieces[i]=Pawn(false);
     }
     if (i>=8&&i<10) {
-      whitePieces[i]=Rook();
-      blackPieces[i]=Rook();
+      whitePieces[i]=Rook(false);
     }
     if (i>=10&&i<12) {
-      whitePieces[i]=Horse();
-      blackPieces[i]=Horse();
+      whitePieces[i]=Horse(false);
     }
     if (i>=12&&i<14) {
-      whitePieces[i]=Bishop();
-      blackPieces[i]=Bishop();
+      whitePieces[i]=Bishop(false);
     }
-    whitePieces[14]=King();
-    whitePieces[15]=Queen();
-    blackPieces[14]=King();
-    blackPieces[15]=Queen();
   }
+  whitePieces[14]=King(false);
+  whitePieces[15]=Queen(false);
 }
+
+void fillArrayBlack()
+ {
+  for (size_t i = 0; i < 14; i++)
+  {
+    if (i<8) {
+      blackPieces[i]=Pawn(true);
+    }
+    if (i>=8&&i<10) {
+      blackPieces[i]=Rook(true);
+    }
+    if (i>=10&&i<12) {
+      blackPieces[i]=Horse(true);
+    }
+    if (i>=12&&i<14) {
+      blackPieces[i]=Bishop(true);
+    }
+  }
+  blackPieces[14]=King(true);
+  blackPieces[15]=Queen(true);
+}
+
 void writeBoard()
 {
 	  for (int i = 0; i < 16; i++) {
@@ -73,7 +89,8 @@ void writeBoard()
 void newGame()
 {
   initBoard();
-  fillArray();
+  fillArrayWhite();
+  fillArrayBlack();
   writeBoard();
   printBoard();
 }

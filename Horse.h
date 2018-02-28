@@ -5,7 +5,7 @@
  *      Author: usuario
  */
 
-#ifndef HORSE_H_
+
 #define HORSE_H_
 #include "Piece.h"
 short int countHorse =0;
@@ -28,16 +28,20 @@ public:
 			this->y = y;
 	}
 
-	Horse(){
-	if (black==true) {
-		figure='h';
-		x =6- countHorse*5;
-		y=7;
-		countHorse--;
+	Horse(bool black) {
+		this->black=black;
+		if (black==true) {
+			countHorse--;
+			figure='h';
+			x =6-countHorse*5;
+			y=0;
+
+		}
+		else if (black==false) {
+			figure='H';
+			x = 1+ countHorse*5;
+			y = 7;
+			countHorse++;
+		}
 	}
-	else if (black==false) {
-		figure='H';
-		x = 1+ countHorse*5;
-		y = 0;
-		countHorse++;
 };

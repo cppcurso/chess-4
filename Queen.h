@@ -28,15 +28,15 @@ public:
 		this->y=y;
 	}
 
-	Queen() {
+	Queen(bool black) {
+		this->black=black;
 		figure='q';
 		x=4;
-		y=7;
+		y=0;
 		if (black==false) {
 			figure='Q';
-			y=0;
+			y=7;
 		}
-
 		}
 };
 

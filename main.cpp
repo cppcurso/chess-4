@@ -3,10 +3,9 @@
 
 //_____CHESS_____//
 
-int main(){
+int main()
+{
   Board board;
   //board.newGame();
 board.newGame();
-
-
 }

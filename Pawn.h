@@ -23,16 +23,18 @@ public:
 		this->y=y;
 	}
 
-	Pawn() {
+	Pawn(bool black) {
+		this->black=black;
 		if (black==true) {
+			countPawn--;
 			figure='p';
 			x=countPawn;
 			y=1;
-			countPawn--;
 		}
 		else if (black==false) {
 			figure='P';
 			y=6;
+			x=countPawn;
 			countPawn++;
 		}
 	}

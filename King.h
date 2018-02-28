@@ -28,13 +28,14 @@ public:
 		this->y=y;
 	}
 
-	King() {
+	King(bool black) {
+			this->black=black;
 			figure='k';
 			x=3;
-			y=7;
+			y=0;
 			if (black==false) {
 				figure='K';
-				y=0;
+				y=7;
 			}
 		}
 };
