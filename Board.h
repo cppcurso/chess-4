@@ -1,14 +1,9 @@
-/*
- * Board.h
- *
- *  Created on: 27/02/2018
- *      Author: usuario
- */
+
+ #include"Piece.h"
  #include"Queen.h"
 #include"King.h"
  #include"Horse.h"
 #include"Bishop.h"
- #include"Piece.h"
 #include"Pawn.h"
 #include"Rook.h"
 #include <iostream>
@@ -42,20 +37,37 @@ void fillArray()
  {
   for (size_t i = 0; i < 14; i++)
   {
-    if (i<8)  whitePieces[i]=Pawn();
-    if (i>=8&&i<10) whitePieces[i]=Rook();
-    if (i>=10&&i<12) whitePieces[i]=Horse();
-    if (i>=12&&i<14) whitePieces[i]=Bishop();
-  }
+    if (i<8) {
+      whitePieces[i]=Pawn();
+      blackPieces[i]=Pawn();
+    }
+    if (i>=8&&i<10) {
+      whitePieces[i]=Rook();
+      blackPieces[i]=Rook();
+    }
+    if (i>=10&&i<12) {
+      whitePieces[i]=Horse();
+      blackPieces[i]=Horse();
+    }
+    if (i>=12&&i<14) {
+      whitePieces[i]=Bishop();
+      blackPieces[i]=Bishop();
+    }
     whitePieces[14]=King();
     whitePieces[15]=Queen();
+    blackPieces[14]=King();
+    blackPieces[15]=Queen();
   }
+}
 void writeBoard()
 {
 	  for (int i = 0; i < 16; i++) {
-		      int a= whitePieces[i].x;
-          int b=whitePieces[i].y;
+		      int a = whitePieces[i].x;
+          int b = whitePieces[i].y;
+          int c = blackPieces[i].x;
+          int d = blackPieces[i].y;
           pieces[a][b]=whitePieces[i].figure;
+          pieces[c][d]=blackPieces[i].figure;
 	  }
 }
 void newGame()
