@@ -35,6 +35,16 @@ void initBoard() {
   }
 }
 void writeBoard()
+ {
+  for (size_t i = 0; i < 8; i++)
+  {
+    whitePieces[i]=Pawn();
+
+  }
+  for (size_t i = 0; i < count; i++) {
+    /* code */
+  }
+}
 {
 	  for (int i = 0; i < 8; i++) {
 		      int a= whitePieces[i].x;
@@ -43,14 +53,10 @@ void writeBoard()
 	  }
 }
 
+ void fill
 void newGame()
 {
-  initBoard();
-  for (size_t i = 0; i < 8; i++)
-  {
-    whitePieces[i]=Pawn();
 
-  }
   writeBoard();
   printBoard();
 }

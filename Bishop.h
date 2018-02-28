@@ -11,7 +11,8 @@
 #include "Piece.h"
 short int countBishop = 0;
 
-class Bishop : public Piece{
+class Bishop : public Piece
+{
 public:
 	bool checkMove(int x, int y){
 			int a = x - this->x
