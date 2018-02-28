@@ -30,8 +30,8 @@ public:
 
 	Queen() {
 			figure='Q';
-			x=0;
-			y=4;
+			x=4;
+			y=0;
 		}
 };
 

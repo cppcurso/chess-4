@@ -5,8 +5,6 @@
  *      Author: usuario
  */
 #include "Piece.h"
-#ifndef ROOK_H_
-#define ROOK_H_
 short int countRook =0;
 
 class Rook : public Piece{
@@ -23,8 +21,8 @@ public:
 	}
 	Rook(){
 		figure ='R';
-		x=1+countRook*7;
-		y=1;
+		x=countRook*7;
+		y=0;
 		countRook++;
 	}
 };

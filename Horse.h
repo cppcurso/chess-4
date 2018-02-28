@@ -14,7 +14,7 @@ class Horse : public Piece{
 public:
 
 	bool checkMove(int x, int y){
-			int a = x - this->x
+			int a = x - this->x;
 			int b = y - this->y;
 			a = a * a;
 			b = b * b;

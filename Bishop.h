@@ -15,8 +15,8 @@ class Bishop : public Piece
 {
 public:
 	bool checkMove(int x, int y){
-			int a = x - this->x
-			int b = y - this->y
+			int a = x - this->x;
+			int b = y - this->y;
 			a = abs(a);
 			b = abs(b);
 			if(a == b){

@@ -30,8 +30,8 @@ public:
 
 	King() {
 			figure='K';
-			x=0
-			y=3;
+			x=3;
+			y=0;
 		}
 };
 

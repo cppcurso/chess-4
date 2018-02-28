@@ -4,6 +4,10 @@
  *  Created on: 27/02/2018
  *      Author: usuario
  */
+ #include"Queen.h"
+#include"King.h"
+ #include"Horse.h"
+#include"Bishop.h"
  #include"Piece.h"
 #include"Pawn.h"
 #include"Rook.h"
@@ -34,29 +38,30 @@ void initBoard() {
   cout <<endl;
   }
 }
-void writeBoard()
+void fillArray()
  {
-  for (size_t i = 0; i < 8; i++)
+  for (size_t i = 0; i < 14; i++)
   {
-    whitePieces[i]=Pawn();
-
+    if (i<8)  whitePieces[i]=Pawn();
+    if (i>=8&&i<10) whitePieces[i]=Rook();
+    if (i>=10&&i<12) whitePieces[i]=Horse();
+    if (i>=12&&i<14) whitePieces[i]=Bishop();
   }
-  for (size_t i = 0; i < count; i++) {
-    /* code */
+    whitePieces[14]=King();
+    whitePieces[15]=Queen();
   }
-}
+void writeBoard()
 {
-	  for (int i = 0; i < 8; i++) {
+	  for (int i = 0; i < 16; i++) {
 		      int a= whitePieces[i].x;
           int b=whitePieces[i].y;
           pieces[a][b]=whitePieces[i].figure;
 	  }
 }
-
- void fill
 void newGame()
 {
-
+  initBoard();
+  fillArray();
   writeBoard();
   printBoard();
 }
