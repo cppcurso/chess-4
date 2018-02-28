@@ -24,7 +24,8 @@ public:
 	}
 
 	Pawn() {
-		figure='P';
+		figure='p';
+		if (black==false) figure='P';
 		x=countPawn;
 		y=1;
 		countPawn++;

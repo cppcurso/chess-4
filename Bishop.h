@@ -30,7 +30,8 @@ public:
 	}
 
 	Bishop(){
-		figure = 'B';
+		figure='b';
+		if (black==false) figure='B';
 		x = 2+ countBishop*3;
 		y = 0;
 		countBishop++;

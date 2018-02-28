@@ -29,7 +29,8 @@ public:
 	}
 
 	Horse(){
-		figure = 'H';
+		figure='h';
+		if (black==false) figure='H';
 		x = 1+ countHorse*5;
 		y = 0;
 		countHorse++;

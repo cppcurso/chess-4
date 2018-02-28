@@ -20,7 +20,8 @@ public:
 		this->y=y;
 	}
 	Rook(){
-		figure ='R';
+		figure='r';
+		if (black==false) figure='R';
 		x=countRook*7;
 		y=0;
 		countRook++;

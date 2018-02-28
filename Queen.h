@@ -29,9 +29,12 @@ public:
 	}
 
 	Queen() {
-			figure='Q';
+			figure='q';
+			if (black==false) figure='Q';
 			x=4;
 			y=0;
+
+
 		}
 };
 

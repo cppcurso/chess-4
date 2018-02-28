@@ -29,7 +29,8 @@ public:
 	}
 
 	King() {
-			figure='K';
+			figure='k';
+			if (black==false) figure='K';
 			x=3;
 			y=0;
 		}
