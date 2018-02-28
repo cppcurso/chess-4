@@ -9,9 +9,9 @@
 #define PIECE_H_
 
 class Piece {
-	char figure;
-	int x,y;
 public:
+	int x,y;
+	char figure;
 	bool black;
 	virtual void move(int x,int y,char figure) {
 

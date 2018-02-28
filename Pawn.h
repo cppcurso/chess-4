@@ -5,13 +5,11 @@
  *      Author: usuario
  */
 
-#ifndef PAWN_H_
-#define PAWN_H_
 
 short int countPawn = 0;
 
 class Pawn : public Piece {
-	figure = 'P';
+	 char figure = 'P';
 public:
 	bool checkMove(int x, int y) {
 		if (this->y+1==y) {
@@ -31,9 +29,3 @@ public:
 	}
 
 };
-
-
-
-
-
-#endif /* PAWN_H_ */

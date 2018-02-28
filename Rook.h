@@ -1,16 +1,9 @@
-/*
- * Rook.h
- *
- *  Created on: 27/02/2018
- *      Author: usuario
- */
+
 #include "Piece.h"
-#ifndef ROOK_H_
-#define ROOK_H_
 short int countRook =0;
 
 class Rook : public Piece{
-	figure ='R';
+	char figure ='R';
 
 public:
 
