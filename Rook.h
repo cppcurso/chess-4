@@ -1,10 +1,15 @@
-
+/*
+ * Rook.h
+ *
+ *  Created on: 27/02/2018
+ *      Author: usuario
+ */
 #include "Piece.h"
+#ifndef ROOK_H_
+#define ROOK_H_
 short int countRook =0;
 
 class Rook : public Piece{
-	char figure ='R';
-
 public:
 
 	bool checkMove(int x, int y)
@@ -17,6 +22,7 @@ public:
 		this->y=y;
 	}
 	Rook(){
+		figure ='R';
 		x=1+countRook*7;
 		y=1;
 		countRook++;

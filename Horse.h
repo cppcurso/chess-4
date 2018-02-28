@@ -12,8 +12,6 @@ short int countHorse =0;
 
 class Horse : public Piece{
 public:
-	figure = 'H';
-
 
 	bool checkMove(int x, int y){
 			int a = x - this->x
@@ -31,6 +29,7 @@ public:
 	}
 
 	Horse(){
+		figure = 'H';
 		x = 1+ countHorse*5;
 		y = 0;
 		countHorse++;

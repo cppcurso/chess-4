@@ -13,8 +13,6 @@ short int countBishop = 0;
 
 class Bishop : public Piece{
 public:
-	figure = 'B';
-
 	bool checkMove(int x, int y){
 			int a = x - this->x
 			int b = y - this->y
@@ -31,9 +29,10 @@ public:
 	}
 
 	Bishop(){
-			x = 2+ countBishop*3;
-			y = 0;
-			countBishop++;
+		figure = 'B';
+		x = 2+ countBishop*3;
+		y = 0;
+		countBishop++;
 		}
 };
 
