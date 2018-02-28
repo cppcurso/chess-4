@@ -30,9 +30,12 @@ public:
 
 	King() {
 			figure='k';
-			if (black==false) figure='K';
 			x=3;
-			y=0;
+			y=7;
+			if (black==false) {
+				figure='K';
+				y=0;
+			}
 		}
 };
 

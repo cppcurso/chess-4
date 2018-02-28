@@ -29,11 +29,13 @@ public:
 	}
 
 	Queen() {
-			figure='q';
-			if (black==false) figure='Q';
-			x=4;
+		figure='q';
+		x=4;
+		y=7;
+		if (black==false) {
+			figure='Q';
 			y=0;
-
+		}
 
 		}
 };

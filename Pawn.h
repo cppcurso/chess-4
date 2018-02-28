@@ -24,11 +24,17 @@ public:
 	}
 
 	Pawn() {
-		figure='p';
-		if (black==false) figure='P';
-		x=countPawn;
-		y=1;
-		countPawn++;
+		if (black==true) {
+			figure='p';
+			x=countPawn;
+			y=1;
+			countPawn--;
+		}
+		else if (black==false) {
+			figure='P';
+			y=6;
+			countPawn++;
+		}
 	}
 
 };

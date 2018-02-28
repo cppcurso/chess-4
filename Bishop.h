@@ -30,11 +30,17 @@ public:
 	}
 
 	Bishop(){
-		figure='b';
-		if (black==false) figure='B';
-		x = 2+ countBishop*3;
-		y = 0;
-		countBishop++;
+		if (black==true) {
+			figure='b';
+			x =5- countBishop*3;
+			y=7;
+			countBishop--;
+		}
+		else if (black==false) {
+			figure='P';
+			x = 2+ countBishop*3;
+			y = 0;
+			countBishop++;
 		}
 };
 

@@ -20,10 +20,15 @@ public:
 		this->y=y;
 	}
 	Rook(){
+	if (black==true) {
 		figure='r';
-		if (black==false) figure='R';
-		x=countRook*7;
-		y=0;
-		countRook++;
+		x =countRook*7;
+		y=7;
+		countRook=0;
 	}
+	else if (black==false) {
+		figure='R';
+		x = countRook*7;
+		y = 0;
+		countRook++;
 };

@@ -29,12 +29,15 @@ public:
 	}
 
 	Horse(){
+	if (black==true) {
 		figure='h';
-		if (black==false) figure='H';
+		x =6- countHorse*5;
+		y=7;
+		countHorse--;
+	}
+	else if (black==false) {
+		figure='H';
 		x = 1+ countHorse*5;
 		y = 0;
 		countHorse++;
-	}
 };
-
-#endif /* HORSE_H_ */
