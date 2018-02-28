@@ -23,23 +23,39 @@ void initBoard() {
     }
   }
 }
-
-void newGame(Piece whitePieces[16])
+ void printBoard()
 {
+  for (int j = 0; j < 8; j++)
+  {
+    for (int i = 0; i < 8; i++)
+    {
+      cout <<pieces[i][j]<<" ";
+    }
+  cout <<endl;
+  }
+}
+void writeBoard()
+{
+	  for (int i = 0; i < 8; i++) {
+		      int a= whitePieces[i].x;
+          int b=whitePieces[i].y;
+          pieces[a][b]=whitePieces[i].figure;
+	  }
+}
+
+void newGame()
+{
+  initBoard();
   for (size_t i = 0; i < 8; i++)
   {
     whitePieces[i]=Pawn();
+
   }
+  writeBoard();
+  printBoard();
 }
-void printBoard() {
-	initBoard();
-	  for (int i = 0; i < 8; i++) {
-		for (int j = 0; j < 8; j++) {
-		  std::cout << pieces[i][j];
-		}
-		std::cout << '\n';
-	  }
-}
+
+
 
 bool valid(int x,int y,char figure) {
 	if (x>7||y>7) {

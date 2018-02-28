@@ -9,8 +9,9 @@
 short int countPawn = 0;
 
 class Pawn : public Piece {
-	 char figure = 'P';
+
 public:
+	//char figure = 'P';
 	bool checkMove(int x, int y) {
 		if (this->y+1==y) {
 			return true;
@@ -23,8 +24,9 @@ public:
 	}
 
 	Pawn() {
+		figure='P';
 		x=countPawn;
-		y=countPawn+1;
+		y=1;
 		countPawn++;
 	}
 

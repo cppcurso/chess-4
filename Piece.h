@@ -10,7 +10,8 @@
 
 class Piece {
 public:
-	int x,y;
+	int x=0;
+	int y=0;
 	char figure;
 	bool black;
 	virtual void move(int x,int y,char figure) {
