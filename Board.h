@@ -86,6 +86,14 @@ void writeBoard()
           pieces[c][d]=blackPieces[i].figure;
 	  }
 }
+
+bool isEmpty(int newPosition[]){
+  if((pieces[newposition[0]][newPosition[1]]) == '-'){
+   return true;
+   cout << "vacio" << endl;
+   } return false;
+}
+
 void newGame()
 {
   initBoard();
