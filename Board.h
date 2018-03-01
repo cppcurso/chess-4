@@ -96,7 +96,7 @@ void newGame()
 }
 
 bool valid(int x,int y){
-	if (x>7||y>7)
+	if ((x>7||x<0) && (y>7||y<0))
   {
 		return false;
   }
@@ -104,26 +104,28 @@ bool valid(int x,int y){
 	}
 
 
-bool findPiece(int x, int y, bool turnBlack) {
+Piece* findPiece(int x, int y, bool turnBlack) {
   if (!valid(x,y)) {
-    std::cout << "LIMITE" << '\n';return false;
+    std::cout << "LIMITE" << '\n';return NULL;
    }
   if (turnBlack==true) {
     std::cout << "NEGRAS" << '\n';
     for (size_t i = 0; i < 16; i++) {
-      if (blackPieces[i].x==x && blackPieces[i].y==y) return true;
+      if (blackPieces[i].x==x && blackPieces[i].y==y) return &blackPieces[i];
     }
   }
   if (turnBlack==false)
   {
+  //  std::cout << "BLANCAS" << '\n';
     for (size_t i = 0; i < 16; i++)
      {
        if (whitePieces[i].x==x && whitePieces[i].y==y)
        {
-         return true;
+         return &whitePieces[i];
+
        }
   }
 }
-  return false;
+  return NULL;
 }
 };

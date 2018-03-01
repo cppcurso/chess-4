@@ -12,29 +12,36 @@ bool checkTurn(unsigned int turn) {
   return false;
 }
 
- void newPlay(bool turnBlack, int pieceToMove[], Board board)
- {
-   do{
-   if (turnBlack == false) {
-     cout<< "----------WHITE TURN-----------"<<endl;
-   }
-   else {
-     cout<< "----------BLACK TURN-----------"<<endl;
-   }
-   cout<<" X OF THE FIGURE TO MOVE"<<endl;
-   cin >> pieceToMove[0];
-   cout<<" Y OF THE FIGURE TO MOVE"<<endl;
-   cin >> pieceToMove[1];
- }
-   while(!board.findPiece(pieceToMove[0],pieceToMove[1],turnBlack));
+void printTurn(bool turnBlack) {
+  if (turnBlack == false) {
+    cout<< "----------WHITE TURN-----------"<<endl;
+  }
+  else {
+    cout<< "----------BLACK TURN-----------"<<endl;
+  }
 }
- void move( int newPosition[])
+
+void newPlay(bool turnBlack, int pieceToMove[], Board board)
+ {
+   printTurn(turnBlack);
+   Piece* pieceTaked;
+   do{
+     cout<<" X OF THE FIGURE TO MOVE"<<endl;
+     cin >> pieceToMove[0];
+     cout<<" Y OF THE FIGURE TO MOVE"<<endl;
+     cin >> pieceToMove[1];
+     pieceTaked=board.findPiece(pieceToMove[0],pieceToMove[1],turnBlack);
+  }
+  while (pieceTaked==NULL);
+}
+
+void move(int newPosition[])
  {
    cout<<" X OF THE NEW POSITION"<<endl;
    cin >> newPosition[0];
    cout<<" Y OF THE NEW POSITION"<<endl;
    cin >> newPosition[1];
-   board.checkMotion(newPosition[0],newPosition[1]);
+   //board.checkMotion(newPosition[0],newPosition[1]);
  }
 
 int main(){
