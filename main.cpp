@@ -5,7 +5,6 @@
 
  void newPlay(bool black,)
  {
-
    if (black == false) {cout<< "----------WHITE TURN-----------"<<endl;}
    else {cout<< "----------BLACK TURN-----------"<<endl;}
    cout<<" X OF THE FIGURE TO MOVE"<<endl;
