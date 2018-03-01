@@ -15,7 +15,7 @@ public:
 	char figure;
 	bool black;
 	virtual void move(int x,int y,char figure) {
-
+		
 	}
 };
 

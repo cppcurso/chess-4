@@ -95,11 +95,32 @@ void newGame()
   printBoard();
 }
 
-
-
 bool valid(int x,int y,char figure) {
 	if (x>7||y>7) {
 		return false;
 	}
+}
+
+bool checkTurn(int turn) {
+  if (turn%2==0) {
+    return true;
+  }
+  return false;
+}
+
+bool findPiece(int x, int y, bool turnBlack) {
+  if (turnBlack==true) {
+    for (size_t i = 0; i < 16; i++) {
+      if (blackPieces[i].x==x && blackPieces[i].y==y) return true;
+    }
+    return false;
+  }
+
+  if (turnBlack==false) {
+    for (size_t i = 0; i < 16; i++) {
+      if (whitePieces[i].x==x && whitePieces[i].y==y) return true;
+    }
+    return false;
+  }
 }
 };
