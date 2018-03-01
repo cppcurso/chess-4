@@ -33,7 +33,7 @@ void initBoard() {
   cout <<endl;
   }
 }
-void newArrayWhite()
+void fillArrayWhite()
  {
   for (size_t i = 0; i < 14; i++)
   {
@@ -54,7 +54,7 @@ void newArrayWhite()
   whitePieces[15]=Queen(false);
 }
 
-void newArrayBlack()
+void fillArrayBlack()
  {
   for (size_t i = 0; i < 14; i++)
   {
@@ -99,13 +99,6 @@ bool valid(int x,int y,char figure) {
 	if (x>7||y>7) {
 		return false;
 	}
-}
-
-bool checkTurn(int turn) {
-  if (turn%2==0) {
-    return true;
-  }
-  return false;
 }
 
 bool findPiece(int x, int y, bool turnBlack) {
