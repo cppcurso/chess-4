@@ -33,7 +33,7 @@ void initBoard() {
   cout <<endl;
   }
 }
-void fillArrayWhite()
+void newArrayWhite()
  {
   for (size_t i = 0; i < 14; i++)
   {
@@ -54,7 +54,7 @@ void fillArrayWhite()
   whitePieces[15]=Queen(false);
 }
 
-void fillArrayBlack()
+void newArrayBlack()
  {
   for (size_t i = 0; i < 14; i++)
   {
