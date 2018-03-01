@@ -104,7 +104,7 @@ void newGame()
 }
 
 bool valid(int x,int y){
-	if ((x>7||x<0) && (y>7||y<0))
+	if (x>7||x<0 || y>7||y<0)
   {
 		return false;
   }
