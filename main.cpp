@@ -33,21 +33,23 @@ void newPlay(bool turnBlack, int pieceToMove[], Board board)
      pieceTaked=board.findPiece(pieceToMove[0],pieceToMove[1],turnBlack);
   }
   while (pieceTaked==NULL);
+
 }
 
-void move(int newPosition[])
+void getNewPosition(int newPosition)
  {
    cout<<" X OF THE NEW POSITION"<<endl;
    cin >> newPosition[0];
    cout<<" Y OF THE NEW POSITION"<<endl;
    cin >> newPosition[1];
-   //board.checkMotion(newPosition[0],newPosition[1]);
  }
 
 int main(){
   Board board;
   int pieceToMove[2];
+  int newPosition[2];
   board.newGame();
   newPlay(checkTurn(turn), pieceToMove, board);
+  void board.move(getNewPosition(newPosition));
 
 }
