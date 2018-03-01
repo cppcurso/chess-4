@@ -95,25 +95,35 @@ void newGame()
   printBoard();
 }
 
-bool valid(int x,int y,char figure) {
-	if (x>7||y>7) {
+bool valid(int x,int y){
+	if (x>7||y>7)
+  {
 		return false;
+  }
+    return true;
 	}
-}
+
 
 bool findPiece(int x, int y, bool turnBlack) {
+  if (!valid(x,y)) {
+    std::cout << "LIMITE" << '\n';return false;
+   }
   if (turnBlack==true) {
+    std::cout << "NEGRAS" << '\n';
     for (size_t i = 0; i < 16; i++) {
       if (blackPieces[i].x==x && blackPieces[i].y==y) return true;
     }
-    return false;
   }
-
-  if (turnBlack==false) {
-    for (size_t i = 0; i < 16; i++) {
-      if (whitePieces[i].x==x && whitePieces[i].y==y) return true;
-    }
-    return false;
+  if (turnBlack==false)
+  {
+    for (size_t i = 0; i < 16; i++)
+     {
+       if (whitePieces[i].x==x && whitePieces[i].y==y)
+       {
+         return true;
+       }
   }
+}
+  return false;
 }
 };
