@@ -53,7 +53,9 @@ int main(){
   pieceToMove = newPlay(checkTurn(turn), board);
   getNewPosition(newPosition);
   if (board.validMoment(newPosition, pieceToMove)) {
-    //board.move(getNewPosition(newPosition), pieceToMove);
+    pieceToMove->move(newPosition);
+    board.initBoard();
+    board.writeBoard();
     std::cout << "Moviendo pieza" << '\n';
     board.printBoard();
   } else {

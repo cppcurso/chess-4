@@ -78,8 +78,8 @@ bool isEmpty(int newPosition[])
 void newGame()
 {
   initBoard();
-  fillArray(blackPieces, false);
-  fillArray(whitePieces, true);
+  fillArray(whitePieces, false);
+  fillArray(blackPieces, true);
   writeBoard();
   printBoard();
 }

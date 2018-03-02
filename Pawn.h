@@ -15,7 +15,8 @@ public:
 	bool  moveOK(int newPosition[]) override {
 		if (this->y+1==newPosition[1]) {
 			return true;
-		} return false;
+		}
+		return false;
 	}
 
 	// void move(int newPosition[]) {
