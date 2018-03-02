@@ -50,6 +50,8 @@ int main(){
   Piece* pieceToMove;
   int newPosition[2];
   board.newGame();
+  do
+{
   pieceToMove = newPlay(checkTurn(turn), board);
   getNewPosition(newPosition);
   if (board.validMoment(newPosition, pieceToMove)) {
@@ -58,8 +60,10 @@ int main(){
     board.writeBoard();
     std::cout << "Moviendo pieza" << '\n';
     board.printBoard();
+    turn++;
   } else {
-    std::cout << "Moviento inválido, haz otro" << '\n';
+    std::cout << "Movimiento inválido, haz otro" << '\n';
   }
-
+}
+while(3==3);
 }

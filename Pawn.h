@@ -12,12 +12,15 @@ class Pawn :  public Piece {
 
 public:
 	//char figure = 'P';
-	bool  moveOK(int newPosition[]) override {
-		if (this->y+1==newPosition[1]) {
-			return true;
-		}
+	bool moveOK(int newPosition[]) override
+	 {
+		if ( black==false && this->y+1==newPosition[1]) return true;
+		if ( black==true && this->y-1==newPosition[1]) return true;
+		{
 		return false;
+		}
 	}
+
 
 	// void move(int newPosition[]) {
 	// 	this->x=newPosition[0];
