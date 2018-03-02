@@ -84,8 +84,8 @@ void newGame()
   printBoard();
 }
 
-bool limitsOK(int x,int y){
-	if (x>7||x<0 || y>7||y<0)
+bool limitsOK(int position[]){
+	if (position[0]>7||position[0]<0 || position[1]>7||position[1]<0)
   {
 		return false;
   }
@@ -93,14 +93,14 @@ bool limitsOK(int x,int y){
 	}
 
 
-Piece* findPiece(int x, int y, bool turnBlack) {
-  if (!limitsOK(x,y)) {
+Piece* findPiece(int pieceToMove[], bool turnBlack) {
+  if (!limitsOK(pieceToMove)) {
     std::cout << "LIMITE" << '\n';return NULL;
    }
   if (turnBlack==true) {
     std::cout << "NEGRAS" << '\n';
     for (size_t i = 0; i < 16; i++) {
-      if (blackPieces[i]->x==x && blackPieces[i]->y==y) return blackPieces[i];
+      if (blackPieces[i]->x==pieceToMove[0] && blackPieces[i]->y==pieceToMove[1]) return blackPieces[i];
     }
   }
   if (turnBlack==false)
@@ -108,10 +108,9 @@ Piece* findPiece(int x, int y, bool turnBlack) {
   //  std::cout << "BLANCAS" << '\n';
     for (size_t i = 0; i < 16; i++)
      {
-       if (whitePieces[i]->x==x && whitePieces[i]->y==y)
+       if (whitePieces[i]->x==pieceToMove[0] && whitePieces[i]->y==pieceToMove[1])
        {
          return whitePieces[i];
-
        }
   }
 }
@@ -119,7 +118,7 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
 bool validMoment(int newPosition[], Piece* pieceToMove)
 {
-  if ( limitsOK( newPosition[0],newPosition[1]) && isEmpty(newPosition) )
+  if ( limitsOK(newPosition) && isEmpty(newPosition) )
   {
     if(pieceToMove->moveOK(newPosition)){
       return true;

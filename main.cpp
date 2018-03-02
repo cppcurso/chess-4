@@ -62,9 +62,7 @@ int main()
     }
   board.initBoard();
   board.printBoard();
-  count++;
+  turn++;
 }
-while(count <15)
-  }
-while(/* condition */);
+while(turn <15);
 }
