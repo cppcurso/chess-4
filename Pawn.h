@@ -20,12 +20,10 @@ public:
 		return false;
 		}
 	}
-
-
-	// void move(int newPosition[]) {
-	// 	this->x=newPosition[0];
-	// 	this->y=newPosition[1];
-	// }
+	 void move(int newPosition[]) {
+		this->x=newPosition[0];
+		this->y=newPosition[1];
+	 }
 
 	Pawn(bool black) {
 		this->black=black;
