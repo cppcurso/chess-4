@@ -121,9 +121,10 @@ bool validMoment(int newPosition[], Piece* pieceToMove)
 {
   if ( limitsOK( newPosition[0],newPosition[1]) && isEmpty(newPosition) )
   {
-    pieceToMove->moveOK(newPosition);
-    pieceToMove->move(newPosition);
+    if(pieceToMove->moveOK(newPosition)){
+      return true;
+    }
   }
-
+  return false;
 }
 };
