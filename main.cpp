@@ -31,7 +31,7 @@ Piece* newPiece(bool turnBlack,  Board board)
      cin >> pieceToMove[0];
      cout<<" Y OF THE FIGURE TO MOVE"<<endl;
      cin >> pieceToMove[1];
-     pieceTaked=board.findPiece(pieceToMove,turnBlack);
+     pieceTaked=board.findPiece(pieceToMove[0],pieceToMove[1],turnBlack);
   }
   while (pieceTaked==NULL);
 return pieceTaked;
@@ -53,33 +53,17 @@ int main()
   board.newGame();
   do
 {
-<<<<<<< HEAD
-  pieceToMove = newPlay(checkTurn(turn), board);
-  getNewPosition(newPosition);
-  if (board.validMoment(newPosition, pieceToMove)) {
-    pieceToMove->move(newPosition);
-    board.initBoard();
-    board.writeBoard();
-    std::cout << "Moviendo pieza" << '\n';
-    board.printBoard();
-    turn++;
-  } else {
-    std::cout << "Movimiento inválido, haz otro" << '\n';
-  }
-}
-while(3==3);
-=======
   pieceToMove = newPiece(checkTurn(turn), board);
   getNewPosition(newPosition);
-  while(board.validMoment(newPosition, pieceToMove))
+  if (board.validMoment(newPosition, pieceToMove))
     {
       pieceToMove->move(newPosition);
+      board.initBoard();
       board.writeBoard();
     }
-  board.initBoard();
   board.printBoard();
   turn++;
 }
 while(turn <15);
->>>>>>> c69bf8554c841d8807d5cee85aaba9e34694644f
+
 }
