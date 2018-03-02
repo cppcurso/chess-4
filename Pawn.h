@@ -12,13 +12,13 @@ class Pawn : public Piece {
 
 public:
 	//char figure = 'P';
-	bool checkMove(int x, int y) {
-		if (this->y+1==y) {
+	bool virtual moveOk(int newPosition) {
+		if (this->y+1==newPosition[1]) {
 			return true;
 		} return false;
 	}
 
-	int virtual move (int x, int y) {
+	int virtual move(int x, int y) {
 		this->x=x;
 		this->y=y;
 	}

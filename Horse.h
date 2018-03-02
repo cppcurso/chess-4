@@ -13,9 +13,10 @@ short int countHorse =0;
 class Horse : public Piece{
 public:
 
-	bool checkMove(int x, int y){
-			int a = x - this->x;
-			int b = y - this->y;
+	bool virtual moveOk( int newPosition[])
+	{
+			int a = newPosition[0] - this->x;
+			int b = newPosition[1]- this->y;
 			a = a * a;
 			b = b * b;
 			if(a + b == 5){
@@ -23,7 +24,8 @@ public:
 			}return false;
 		}
 
-	int virtual move(int x, int i){
+	bool virtual moveOk( int newPosition[])
+	{
 			this->x = x;
 			this->y = y;
 	}

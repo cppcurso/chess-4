@@ -13,17 +13,17 @@
 class King : public Piece {
 
 public:
-	bool checkMove(int x, int y) {
-		int a = x - this->x;
-		int b = y - this->y;
+	bool virtual moveOk( int newPosition[]) {
+		int a = newPosition[0] - this->x;
+		int b = newPosition[1] - this->y;
 		a = a * a;
 		b = b * b;
-		if (this->y+1==y || this->x+1==x || a+b==2) {
+		if (this->y+1==newPosition[1] || this->x+1==newPosition[0] || a+b==2) {
 			return true;
 		} return false;
 	}
 
-	int virtual move (int x, int y) {
+	int virtual move(int x, int y) {
 		this->x=x;
 		this->y=y;
 	}

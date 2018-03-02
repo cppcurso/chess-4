@@ -14,8 +14,9 @@ public:
 	int y=0;
 	char figure;
 	bool black;
-	virtual void move(int x,int y,char figure) {
-		
+	virtual void moveOk(int newPosition[], char figure) 
+	{
+
 	}
 };
 

@@ -13,12 +13,12 @@
 class Queen : public Piece {
 
 public:
-	bool checkMove(int x, int y) {
-		int a = x - this->x;
-		int b = y - this->y;
+	bool virtual moveOk( int newPosition[]) {
+		int a = newPosition[0] - this->x;
+		int b = newPosition[1]- this->y;
 		a = abs (a);
 		b = abs (b);
-		if (this->y==y || this->x==x || a == b) {
+		if (this->y==newPosition[1] || this->x==newPosition[0] || a == b) {
 			return true;
 		} return false;
 	}

@@ -10,12 +10,12 @@ short int countRook =0;
 class Rook : public Piece{
 public:
 
-	bool checkMove(int x, int y)
+	bool virtual moveOk( int newPosition[])
 	{
-		if (x==this->x || y ==this->y) return true;
+		if (newPosition[0]==this->x || newPosition[1] ==this->y) return true;
 	}
 
-	int virtual move(int x, int y) {
+	bool virtual move( int newPosition[]) {
 		this->x=x;
 		this->y=y;
 	}

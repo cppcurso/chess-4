@@ -87,7 +87,8 @@ void writeBoard()
 	  }
 }
 
-bool isEmpty(int newPosition[]){
+bool isEmpty(int newPosition[])
+{
   if((pieces[newposition[0]][newPosition[1]]) == '-'){
    return true;
    cout << "vacio" << endl;
@@ -135,5 +136,12 @@ Piece* findPiece(int x, int y, bool turnBlack) {
   }
 }
   return NULL;
+}
+bool ValidMoment(int newPosition[], Piece piecetoMove)
+{
+  if ( valid( newPosition[0],newPosition[1]) && isEmpty(newPosition) )
+  {
+    picetoMove.moveOK(newPosition);
+  }
 }
 };
