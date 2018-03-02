@@ -10,10 +10,10 @@
 #include "Piece.h"
 short int countHorse =0;
 
-class Horse : public Piece{
+class Horse :  public Piece{
 public:
 
-	bool virtual moveOk( int newPosition[])
+	bool moveOK( int newPosition[])
 	{
 			int a = newPosition[0] - this->x;
 			int b = newPosition[1]- this->y;
@@ -24,7 +24,7 @@ public:
 			}return false;
 		}
 
-	bool virtual moveOk( int newPosition[])
+	bool  move( int newPosition[])
 	{
 			this->x = x;
 			this->y = y;

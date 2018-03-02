@@ -14,10 +14,7 @@ public:
 	int y=0;
 	char figure;
 	bool black;
-	virtual void moveOk(int newPosition[], char figure) 
-	{
-
-	}
+  bool virtual moveOK(int newPosition[])=0;  
 };
 
 #endif /* PIECE_H_ */

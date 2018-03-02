@@ -7,15 +7,16 @@
 #include "Piece.h"
 short int countRook =0;
 
-class Rook : public Piece{
+class Rook : public Piece
+{
 public:
 
-	bool virtual moveOk( int newPosition[])
+	bool moveOK( int newPosition[])
 	{
 		if (newPosition[0]==this->x || newPosition[1] ==this->y) return true;
 	}
 
-	bool virtual move( int newPosition[]) {
+	bool  move( int newPosition[]) {
 		this->x=x;
 		this->y=y;
 	}

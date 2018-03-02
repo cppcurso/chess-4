@@ -14,7 +14,7 @@ short int countBishop = 0;
 class Bishop : public Piece
 {
 public:
-	bool virtual moveOk( int newPosition[]) {
+	bool moveOK( int newPosition[]) {
 			int a = newPosition[0] - this->x;
 			int b = newPosition[1] - this->y;
 			a = abs(a);
@@ -24,7 +24,7 @@ public:
 			} return false;
 		}
 
-	int virtual move(int x, int i){
+	int  move(int x, int i){
 		this->x = x;
 		this->y = y;
 	}

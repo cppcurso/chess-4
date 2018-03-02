@@ -10,10 +10,10 @@
 #define QUEEN_H_
 #include <stdlib.h>
 
-class Queen : public Piece {
+class Queen :  public Piece {
 
 public:
-	bool virtual moveOk( int newPosition[]) {
+	bool  moveOK( int newPosition[]) {
 		int a = newPosition[0] - this->x;
 		int b = newPosition[1]- this->y;
 		a = abs (a);
@@ -23,7 +23,7 @@ public:
 		} return false;
 	}
 
-	int virtual move (int x, int y) {
+	int  move (int x, int y) {
 		this->x=x;
 		this->y=y;
 	}

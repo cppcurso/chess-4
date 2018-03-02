@@ -12,8 +12,8 @@ using namespace std;
 class Board {
 public:
   char pieces[8][8];
-  Piece blackPieces[16];
-  Piece whitePieces[16];
+  Piece* blackPieces[16];
+  Piece* whitePieces[16];
 
 void initBoard() {
   for (int i = 0; i < 8; i++) {
@@ -33,63 +33,43 @@ void initBoard() {
   cout <<endl;
   }
 }
-void fillArrayWhite()
- {
-  for (size_t i = 0; i < 14; i++)
-  {
-    if (i<8) {
-      whitePieces[i]=Pawn(false);
-    }
-    if (i>=8&&i<10) {
-      whitePieces[i]=Rook(false);
-    }
-    if (i>=10&&i<12) {
-      whitePieces[i]=Horse(false);
-    }
-    if (i>=12&&i<14) {
-      whitePieces[i]=Bishop(false);
-    }
-  }
-  whitePieces[14]=King(false);
-  whitePieces[15]=Queen(false);
-}
 
-void fillArrayBlack()
+void fillArray(Piece* pieces[], bool black)
  {
   for (size_t i = 0; i < 14; i++)
   {
     if (i<8) {
-      blackPieces[i]=Pawn(true);
+      pieces[i]= new Pawn(black);
     }
     if (i>=8&&i<10) {
-      blackPieces[i]=Rook(true);
+      pieces[i]= new Rook(black);
     }
     if (i>=10&&i<12) {
-      blackPieces[i]=Horse(true);
+      pieces[i]= new Horse(black);
     }
     if (i>=12&&i<14) {
-      blackPieces[i]=Bishop(true);
+      pieces[i]= new Bishop(black);
     }
   }
-  blackPieces[14]=King(true);
-  blackPieces[15]=Queen(true);
+  pieces[14]= new King(black);
+  pieces[15]= new Queen(black);
 }
 
 void writeBoard()
 {
 	  for (int i = 0; i < 16; i++) {
-		      int a = whitePieces[i].x;
-          int b = whitePieces[i].y;
-          int c = blackPieces[i].x;
-          int d = blackPieces[i].y;
-          pieces[a][b]=whitePieces[i].figure;
-          pieces[c][d]=blackPieces[i].figure;
+		      int a = whitePieces[i]->x;
+          int b = whitePieces[i]->y;
+          int c = blackPieces[i]->x;
+          int d = blackPieces[i]->y;
+          pieces[a][b]=whitePieces[i]->figure;
+          pieces[c][d]=blackPieces[i]->figure;
 	  }
 }
 
 bool isEmpty(int newPosition[])
 {
-  if((pieces[newposition[0]][newPosition[1]]) == '-'){
+  if((pieces[newPosition[0]][newPosition[1]]) == '-'){
    return true;
    cout << "vacio" << endl;
    } return false;
@@ -98,13 +78,13 @@ bool isEmpty(int newPosition[])
 void newGame()
 {
   initBoard();
-  fillArrayWhite();
-  fillArrayBlack();
+  fillArray(blackPieces, false);
+  fillArray(whitePieces, true);
   writeBoard();
   printBoard();
 }
 
-bool valid(int x,int y){
+bool limitsOK(int x,int y){
 	if (x>7||x<0 || y>7||y<0)
   {
 		return false;
@@ -114,13 +94,13 @@ bool valid(int x,int y){
 
 
 Piece* findPiece(int x, int y, bool turnBlack) {
-  if (!valid(x,y)) {
+  if (!limitsOK(x,y)) {
     std::cout << "LIMITE" << '\n';return NULL;
    }
   if (turnBlack==true) {
     std::cout << "NEGRAS" << '\n';
     for (size_t i = 0; i < 16; i++) {
-      if (blackPieces[i].x==x && blackPieces[i].y==y) return &blackPieces[i];
+      if (blackPieces[i]->x==x && blackPieces[i]->y==y) return blackPieces[i];
     }
   }
   if (turnBlack==false)
@@ -128,20 +108,20 @@ Piece* findPiece(int x, int y, bool turnBlack) {
   //  std::cout << "BLANCAS" << '\n';
     for (size_t i = 0; i < 16; i++)
      {
-       if (whitePieces[i].x==x && whitePieces[i].y==y)
+       if (whitePieces[i]->x==x && whitePieces[i]->y==y)
        {
-         return &whitePieces[i];
+         return whitePieces[i];
 
        }
   }
 }
   return NULL;
 }
-bool ValidMoment(int newPosition[], Piece piecetoMove)
+bool validMoment(int newPosition[], Piece* pieceToMove)
 {
-  if ( valid( newPosition[0],newPosition[1]) && isEmpty(newPosition) )
+  if ( limitsOK( newPosition[0],newPosition[1]) && isEmpty(newPosition) )
   {
-    picetoMove.moveOK(newPosition);
+    pieceToMove->moveOK(newPosition);
   }
 }
 };
