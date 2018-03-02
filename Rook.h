@@ -16,10 +16,10 @@ public:
 		if (newPosition[0]==this->x || newPosition[1] ==this->y) return true;
 	}
 
-	bool  move( int newPosition[]) {
-		this->x=x;
-		this->y=y;
-	}
+	// bool  move( int newPosition[]) {
+	// 	this->x=x;
+	// 	this->y=y;
+	// }
 	Rook(bool black) {
 		this->black=black;
 		if (black==true) {

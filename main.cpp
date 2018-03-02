@@ -55,6 +55,7 @@ int main(){
   if (board.validMoment(newPosition, pieceToMove)) {
     //board.move(getNewPosition(newPosition), pieceToMove);
     std::cout << "Moviendo pieza" << '\n';
+    board.printBoard();
   } else {
     std::cout << "Moviento inválido, haz otro" << '\n';
   }

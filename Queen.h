@@ -23,10 +23,10 @@ public:
 		} return false;
 	}
 
-	int  move (int x, int y) {
-		this->x=x;
-		this->y=y;
-	}
+	// int  move (int x, int y) {
+	// 	this->x=x;
+	// 	this->y=y;
+	// }
 
 	Queen(bool black) {
 		this->black=black;

@@ -24,10 +24,10 @@ public:
 			} return false;
 		}
 
-	int  move(int x, int i){
-		this->x = x;
-		this->y = y;
-	}
+	// int  move(int x, int i){
+	// 	this->x = x;
+	// 	this->y = y;
+	// }
 
 	Bishop(bool black) {
 		this->black=black;

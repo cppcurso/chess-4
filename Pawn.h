@@ -18,10 +18,10 @@ public:
 		} return false;
 	}
 
-	int move(int x, int y) {
-		this->x=x;
-		this->y=y;
-	}
+	// void move(int newPosition[]) {
+	// 	this->x=newPosition[0];
+	// 	this->y=newPosition[1];
+	// }
 
 	Pawn(bool black) {
 		this->black=black;

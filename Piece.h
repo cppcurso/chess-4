@@ -14,7 +14,12 @@ public:
 	int y=0;
 	char figure;
 	bool black;
-  bool virtual moveOK(int newPosition[])=0;  
+  bool virtual moveOK(int newPosition[])=0;
+	//void virtual move (int newPosition[])=0;
+	void move(int newPosition[]) {
+		this->x=newPosition[0];
+		this->y=newPosition[1];
+	}
 };
 
 #endif /* PIECE_H_ */

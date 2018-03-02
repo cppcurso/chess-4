@@ -24,11 +24,11 @@ public:
 			}return false;
 		}
 
-	bool  move( int newPosition[])
-	{
-			this->x = x;
-			this->y = y;
-	}
+	// bool  move( int newPosition[])
+	// {
+	// 		this->x = x;
+	// 		this->y = y;
+	// }
 
 	Horse(bool black) {
 		this->black=black;
