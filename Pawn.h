@@ -12,10 +12,10 @@ class Pawn :  public Piece {
 
 public:
 	//char figure = 'P';
-	bool moveOK(int newPosition[]) override
-	 {
-		if ( black==false && this->y+1==newPosition[1]) return true;
-		if ( black==true && this->y-1==newPosition[1]) return true;
+	bool moveOK(int newPosition[])
+	 {std::cout << black << '\n';
+		if ( black==false && newPosition[1]-this->y==1) return true;
+		if ( black==true && newPosition[1]-this->y==-1) return true;
 		{
 		return false;
 		}
@@ -23,6 +23,7 @@ public:
 	 void move(int newPosition[]) {
 		this->x=newPosition[0];
 		this->y=newPosition[1];
+		std::cout << "move done" << '\n';
 	 }
 
 	Pawn(bool black) {

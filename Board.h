@@ -40,6 +40,7 @@ void fillArray(Piece* pieces[], bool black)
   {
     if (i<8) {
       pieces[i]= new Pawn(black);
+      //pieces[i]->black=black;
     }
     if (i>=8&&i<10) {
       pieces[i]= new Rook(black);
