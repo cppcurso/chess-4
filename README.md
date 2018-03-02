@@ -1,6 +1,6 @@
-# chess-4
+# Chess 4
 El ajedrez en C++ de la fila 4
-# Developers
+## Developers
 - Adrian
 - Carlos
 - Antonio
