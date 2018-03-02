@@ -51,18 +51,25 @@ int main()
   Piece* pieceToMove;
   int newPosition[2];
   board.newGame();
+  bool out=false;
   do
 {
   pieceToMove = newPiece(checkTurn(turn), board);
-  getNewPosition(newPosition);
-  if (board.validMoment(newPosition, pieceToMove))
+  do
+  {
+    out=false;
+    getNewPosition(newPosition);
+    if (board.validMoment(newPosition, pieceToMove))
     {
       pieceToMove->move(newPosition);
       board.initBoard();
       board.writeBoard();
+      board.printBoard();
+      turn++;
+      out=true;
     }
-  board.printBoard();
-  turn++;
+   }
+    while(out==false);
 }
 while(turn <15);
 
