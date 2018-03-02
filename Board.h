@@ -58,12 +58,12 @@ void fillArray(Piece* pieces[], bool black)
 void writeBoard()
 {
 	  for (int i = 0; i < 16; i++) {
-		      int a = whitePieces[i]->x;
-          int b = whitePieces[i]->y;
-          int c = blackPieces[i]->x;
-          int d = blackPieces[i]->y;
-          pieces[a][b]=whitePieces[i]->figure;
-          pieces[c][d]=blackPieces[i]->figure;
+		      int whiteX = whitePieces[i]->x;
+          int whiteY = whitePieces[i]->y;
+          int blackX = blackPieces[i]->x;
+          int blackY = blackPieces[i]->y;
+          pieces[whiteX][whiteY]=whitePieces[i]->figure;
+          pieces[blackX][blackY]=blackPieces[i]->figure;
 	  }
 }
 
