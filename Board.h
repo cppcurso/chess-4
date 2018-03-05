@@ -89,7 +89,6 @@ bool isEmpty(int newPosition[])
 {
   if((pieces[newPosition[0]][newPosition[1]]) == '-'){
    return true;
-   cout << "Vacío" << endl;
    } return false;
 }
 void startGame()
