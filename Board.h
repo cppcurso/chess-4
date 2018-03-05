@@ -9,7 +9,15 @@
 using namespace std;
 
 class Board {
+
+  Board() {};
+  Board(const Board& s);
+  void operator=(const Board& s);
 public:
+  static Board& getBoard() {
+      static Board newBoard;
+      return newBoard;
+  }
   char pieces[8][8];
   Piece* blackPieces[16];
   Piece* whitePieces[16];
@@ -84,7 +92,6 @@ bool isEmpty(int newPosition[])
    cout << "Vacío" << endl;
    } return false;
 }
-
 void newGame()
 {
   initBoard();
