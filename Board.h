@@ -84,13 +84,17 @@ void writeBoard()
           pieces[blackX][blackY]=blackPieces[i]->figure;
 	  }
 }
+bool wayFree(int newPosition, Piece* pieceToMove)
+{
 
+}
 bool isEmpty(int newPosition[])
 {
   if((pieces[newPosition[0]][newPosition[1]]) == '-'){
    return true;
    cout << "Vacío" << endl;
-   } return false;
+   }
+  return false;
 }
 void startGame()
 {
@@ -130,14 +134,36 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
   return NULL;
 }
+
 bool validMoment(int newPosition[], Piece* pieceToMove)
 {
   if (limitsOK(newPosition[0],newPosition[1])
   && isEmpty(newPosition)
-  && pieceToMove->moveOK(newPosition))
+  && pieceToMove->moveOK(newPosition)
+  && checkWay( newPosition,pieceToMove))
   {
   return true;
   }
   return false;
+}
+
+bool checkWay(int newPosition[], Piece* pieceToMove)
+{ int position[2];
+  position[0]=pieceToMove->x;
+  position[1]=pieceToMove->y;
+  while (position[0]!=newPosition[0] || position[1]!=newPosition[1] )
+  {
+  if (newPosition[0]>position[0]) position[0]++;
+  else if(newPosition[0]<position[0]) position[0]--;
+  if (newPosition[1]>position[1]) position[1]++;
+  else if(newPosition[1]<position[1]) position[1]--;
+
+   if (!isEmpty(position)) {
+      std::cout << "Estas tonto? Yo no salto"<< '\n';
+     return false;
+
+  }
+}
+  return true;
 }
 };
