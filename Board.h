@@ -17,15 +17,24 @@ public:
 
 void initBoard() {
   for (int i = 0; i < 8; i++) {
+    //if (i==0) pieces[i][j] = i;
     for (int j = 0; j < 8; j++) {
+        if (i==0) pieces[i][j] = i;
     	pieces[i][j] = '-';
     }
   }
 }
  void printBoard()
-{
+{ std::cout << "    ";
+  for (size_t i = 0; i < 8; i++)
+    {
+      std::cout << i<<" ";
+    }
+  std::cout << '\n';
+    std::cout <<"    ---------------" <<'\n';
   for (int j = 0; j < 8; j++)
   {
+    std::cout << j<<"|  ";
     for (int i = 0; i < 8; i++)
     {
       cout <<pieces[i][j]<<" ";
@@ -120,11 +129,12 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
 bool validMoment(int newPosition[], Piece* pieceToMove)
 {
-  if ( limitsOK( newPosition[0],newPosition[1]) && isEmpty(newPosition) )
+  if ( limitsOK( newPosition[0],newPosition[1])
+  && isEmpty(newPosition)
+  && pieceToMove->moveOK(newPosition) )
   {
-    pieceToMove->moveOK(newPosition);
-    pieceToMove->move(newPosition);
+  return true;
   }
-
+  return false;
 }
 };

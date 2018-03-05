@@ -13,12 +13,12 @@ class Pawn :  public Piece {
 public:
 	//char figure = 'P';
 	bool moveOK(int newPosition[])
-	 {std::cout << black << '\n';
-		if ( black==false && newPosition[1]-this->y==1) return true;
-		if ( black==true && newPosition[1]-this->y==-1) return true;
-		{
+	 {std::cout << black << newPosition[1]<< this->y<< '\n';
+		if ( black==false && (newPosition[1]-this->y)==-1) return true;
+		if ( black==true && (newPosition[1]-this->y)==1) return true;
+
 		return false;
-		}
+
 	}
 	 void move(int newPosition[]) {
 		this->x=newPosition[0];
