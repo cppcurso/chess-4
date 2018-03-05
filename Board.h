@@ -152,7 +152,9 @@ bool validMoment(int newPosition[], Piece* pieceToMove)
 }
 
 bool checkWay(int newPosition[], Piece* pieceToMove)
-{ int position[2];
+{
+  if (pieceToMove->figure=='H' || pieceToMove->figure=='h') return true;
+  int position[2];
   position[0]=pieceToMove->x;
   position[1]=pieceToMove->y;
   while (position[0]!=newPosition[0] || position[1]!=newPosition[1] )
@@ -163,9 +165,10 @@ bool checkWay(int newPosition[], Piece* pieceToMove)
   else if(newPosition[1]<position[1]) position[1]--;
 
    if (!isEmpty(position)) {
-      std::cout << "Estas tonto? Yo no salto"<< '\n';
+      std::cout << "------------------------------" << '\n';
+      std::cout << "A PIECE CAN'T JUMP OTHER PIECES"<< '\n';
+      std::cout << "------------------------------" << '\n' << endl;
      return false;
-
   }
 }
   return true;
