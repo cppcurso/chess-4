@@ -92,11 +92,11 @@ bool isEmpty(int newPosition[])
    cout << "Vacío" << endl;
    } return false;
 }
-void newGame()
+void startGame()
 {
-  initBoard();
   fillArray(whitePieces, false);
   fillArray(blackPieces, true);
+  initBoard();
   writeBoard();
   printBoard();
 }
@@ -108,8 +108,6 @@ bool limitsOK(int x,int y){
   }
     return true;
 	}
-
-
 Piece* findPiece(int x, int y, bool turnBlack) {
   if (!limitsOK(x,y)) {
     std::cout << '\n';
