@@ -92,9 +92,7 @@ bool isEmpty(int newPosition[])
 {
   if((pieces[newPosition[0]][newPosition[1]]) == '-'){
    return true;
-   cout << "Vacío" << endl;
-   }
-  return false;
+   } return false;
 }
 void startGame()
 {
@@ -114,7 +112,10 @@ bool limitsOK(int x,int y){
 	}
 Piece* findPiece(int x, int y, bool turnBlack) {
   if (!limitsOK(x,y)) {
-    std::cout << "LIMITE" << '\n';return NULL;
+    std::cout << '\n';
+    std::cout << "------------------------------" << '\n';
+    std::cout << "THE POSITION IS OUTSIDE THE LIMIT" << '\n'; return NULL;
+    std::cout << "------------------------------" << '\n' << endl;
    }
   if (turnBlack==true) {
     for (size_t i = 0; i < 16; i++) {
@@ -144,6 +145,9 @@ bool validMoment(int newPosition[], Piece* pieceToMove)
   {
   return true;
   }
+  std::cout << "------------------------------" << '\n';
+  std::cout << "THE PIECE CAN'T MOVE THERE" << '\n';
+  std::cout << "------------------------------" << '\n' << endl;
   return false;
 }
 
