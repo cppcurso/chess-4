@@ -23,11 +23,6 @@ public:
 		} return false;
 	}
 
-	// int move(int x, int y) {
-	// 	this->x=x;
-	// 	this->y=y;
-	// }
-
 	King(bool black) {
 			this->black=black;
 			figure='k';
