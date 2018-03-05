@@ -1,8 +1,7 @@
-
- #include"Piece.h"
- #include"Queen.h"
+#include"Piece.h"
+#include"Queen.h"
 #include"King.h"
- #include"Horse.h"
+#include"Horse.h"
 #include"Bishop.h"
 #include"Pawn.h"
 #include"Rook.h"
@@ -25,21 +24,22 @@ public:
 
 void initBoard() {
   for (int i = 0; i < 8; i++) {
-    //if (i==0) pieces[i][j] = i;
     for (int j = 0; j < 8; j++) {
         if (i==0) pieces[i][j] = i;
     	pieces[i][j] = '-';
     }
   }
 }
- void printBoard()
-{ std::cout << "    ";
+ void printBoard() {
+  std::cout << '\n';
+  std::cout << "    ";
   for (size_t i = 0; i < 8; i++)
     {
-      std::cout << i<<" ";
+      std::cout << i << " ";
     }
-  std::cout << '\n';
-    std::cout <<"    ---------------" <<'\n';
+    std::cout << '\n';
+    std::cout << "    ---------------" << '\n';
+    std::cout << "         BLACK" << '\n';
   for (int j = 0; j < 8; j++)
   {
     std::cout << j<<"|  ";
@@ -49,6 +49,7 @@ void initBoard() {
     }
   cout <<endl;
   }
+  std::cout << "         WHITE" << '\n';
 }
 
 void fillArray(Piece* pieces[], bool black)
@@ -57,7 +58,6 @@ void fillArray(Piece* pieces[], bool black)
   {
     if (i<8) {
       pieces[i]= new Pawn(black);
-      //pieces[i]->black=black;
     }
     if (i>=8&&i<10) {
       pieces[i]= new Rook(black);
@@ -89,7 +89,7 @@ bool isEmpty(int newPosition[])
 {
   if((pieces[newPosition[0]][newPosition[1]]) == '-'){
    return true;
-   cout << "vacio" << endl;
+   cout << "Vacío" << endl;
    } return false;
 }
 void startGame()
@@ -113,14 +113,12 @@ Piece* findPiece(int x, int y, bool turnBlack) {
     std::cout << "LIMITE" << '\n';return NULL;
    }
   if (turnBlack==true) {
-    std::cout << "NEGRAS" << '\n';
     for (size_t i = 0; i < 16; i++) {
       if (blackPieces[i]->x==x && blackPieces[i]->y==y) return blackPieces[i];
     }
   }
   if (turnBlack==false)
   {
-  //  std::cout << "BLANCAS" << '\n';
     for (size_t i = 0; i < 16; i++)
      {
        if (whitePieces[i]->x==x && whitePieces[i]->y==y)
@@ -134,9 +132,9 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
 bool validMoment(int newPosition[], Piece* pieceToMove)
 {
-  if ( limitsOK( newPosition[0],newPosition[1])
+  if (limitsOK(newPosition[0],newPosition[1])
   && isEmpty(newPosition)
-  && pieceToMove->moveOK(newPosition) )
+  && pieceToMove->moveOK(newPosition))
   {
   return true;
   }
