@@ -14,9 +14,11 @@ bool checkTurn(unsigned int turn) {
 
 void printTurn(bool turnBlack) {
   if (turnBlack == false) {
+    std::cout << '\n';
     cout<< "----------WHITE TURN-----------"<<endl;
   }
   else {
+    std::cout << '\n';
     cout<< "----------BLACK TURN-----------"<<endl;
   }
 }
@@ -32,9 +34,15 @@ Piece* newPiece(bool turnBlack)
      cout<<" Y OF THE FIGURE TO MOVE"<<endl;
      cin >> pieceToMove[1];
      pieceTaked=Board::getBoard().findPiece(pieceToMove[0],pieceToMove[1],turnBlack);
+     if (pieceTaked==NULL) {
+     std::cout << "------------------------------" << '\n';
+     std::cout << "THE PIECE ISN'T FOUND" << '\n';
+     std::cout << "------------------------------" << '\n' << endl;
+   }
   }
   while (pieceTaked==NULL);
 return pieceTaked;
+std::cout << '\n';
 }
 
 void getNewPosition(int newPosition[])
@@ -62,7 +70,7 @@ int main()
     {
       pieceToMove->move(newPosition);
       Board::getBoard().initBoard();
-    Board::getBoard().writeBoard();
+      Board::getBoard().writeBoard();
       Board::getBoard().printBoard();
       turn++;
       out=true;

@@ -112,7 +112,10 @@ bool limitsOK(int x,int y){
 
 Piece* findPiece(int x, int y, bool turnBlack) {
   if (!limitsOK(x,y)) {
-    std::cout << "LIMITE" << '\n';return NULL;
+    std::cout << '\n';
+    std::cout << "------------------------------" << '\n';
+    std::cout << "THE POSITION IS OUTSIDE THE LIMIT" << '\n'; return NULL;
+    std::cout << "------------------------------" << '\n' << endl;
    }
   if (turnBlack==true) {
     for (size_t i = 0; i < 16; i++) {
