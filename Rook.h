@@ -14,6 +14,7 @@ public:
 	bool moveOK( int newPosition[])
 	{
 		if (newPosition[0]==this->x || newPosition[1] ==this->y) return true;
+		return false;
 	}
 
 	Rook(bool black) {
