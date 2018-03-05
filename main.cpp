@@ -3,7 +3,7 @@
 
 //_____CHESS_____//
 
-unsigned int turn = 1;
+unsigned int plays = 1;
 
 bool checkTurn(unsigned int turn) {
   if (turn%2==0) {
@@ -45,15 +45,11 @@ void getNewPosition(int newPosition[])
    cin >> newPosition[1];
  }
 
-int main()
-{
+void turn() {
   Piece* pieceToMove;
   int newPosition[2];
-  Board::getBoard().newGame();
+  pieceToMove = newPiece(checkTurn(plays));
   bool out=false;
-  do
-{
-  pieceToMove = newPiece(checkTurn(turn));
   do
   {
     out=false;
@@ -64,12 +60,21 @@ int main()
       Board::getBoard().initBoard();
     Board::getBoard().writeBoard();
       Board::getBoard().printBoard();
-      turn++;
+      plays++;
       out=true;
     }
    }
     while(out==false);
 }
-while(turn <15);
 
+int main()
+{
+  Board::getBoard();
+  Board::getBoard().startGame();
+  do
+{
+  turn();
+}
+while(plays <15);
+cout<<"END"<<endl;
 }
