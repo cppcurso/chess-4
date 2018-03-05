@@ -141,6 +141,9 @@ bool validMoment(int newPosition[], Piece* pieceToMove)
   {
   return true;
   }
+  std::cout << "------------------------------" << '\n';
+  std::cout << "THE PIECE CAN'T MOVE THERE" << '\n';
+  std::cout << "------------------------------" << '\n' << endl;
   return false;
 }
 };
