@@ -136,7 +136,6 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
   return NULL;
 }
-
 bool validMoment(int newPosition[], Piece* pieceToMove, bool black)
 {
   if (limitsOK(newPosition[0],newPosition[1])
@@ -152,7 +151,7 @@ bool validMoment(int newPosition[], Piece* pieceToMove, bool black)
   return false;
 }
 
-bool checkWay(int newPosition[], Piece* pieceToMove, bool turn)
+bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
 {
   if (pieceToMove->figure=='H' || pieceToMove->figure=='h') return true;
   int position[2];
@@ -166,7 +165,7 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool turn)
   else if(newPosition[1]<position[1]) position[1]--;
    if (!isEmpty(position))
    {
-     if (pieceToMove->black==turn)
+     if (pieceToMove->black==blacks)
      {
       std::cout << "------------------------------" << '\n';
       std::cout << "A PIECE CAN'T JUMP OTHER PIECES"<< '\n';
@@ -174,7 +173,8 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool turn)
       }
       else if (position[0]==newPosition[0]&&position[1]==newPosition[1]) // si mi destino es la pieza
       {
-         eat(newPosition, turn);
+         eat(newPosition,blacks);
+         return true;
       }
      return false;
   }
@@ -182,15 +182,23 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool turn)
   return true;
 }
 
-void eat(int newPosition[], bool turn)
+void eat(int newPosition[], bool blacks,vector <Piece*> &whitePiecesVector, vector <Piece*> &blackPiecesVector )
 {
-  // if (turn==true){
-  //   for (size_t i = 0; i < 16; i++) {
-  //     if (newPosition[i].x==whitePieces[i]->figure) {
-  //       std::cout << "-" << '\n';
-  //     }
-  //   }
-  //   return false;
-  // }
+vector<int>::iterator it; // Definición del iterador
+  if (blacks==true)
+  {     for (it = whitePiecesVector.begin(); it < whitePiecesVector.end(); i++)
+          if (it->x==newPosition[0]&&it->y==newPosition[1])
+            {
+                whitePiecesVector.erase(it);
+              }
+  }
+  else
+  {
+    for (it = blackPiecesVector.begin(); it < blackPiecesVector.end(); i++)
+            if (it->x==newPosition[0]&&it->y==newPosition[1])
+              {
+                  blackPiecesVector.erase(it);
+                }
+  }
 }
 };

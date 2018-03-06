@@ -73,7 +73,6 @@ void turn() {
    }
     while(out==false);
 }
-
 int main()
 {
   Board::getBoard();
