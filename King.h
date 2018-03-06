@@ -18,7 +18,7 @@ public:
 		int b = newPosition[1] - this->y;
 		a = a * a;
 		b = b * b;
-		if (this->y+1==newPosition[1] || this->x+1==newPosition[0] || a+b==2) {
+		if (a==1 || b==1 || a+b==2) {
 			return true;
 		} return false;
 	}
