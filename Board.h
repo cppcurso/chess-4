@@ -5,7 +5,9 @@
 #include"Bishop.h"
 #include"Pawn.h"
 #include"Rook.h"
+#include <vector>
 #include <iostream>
+ //for (auto& *Piece: pieces)
 using namespace std;
 
 class Board {
@@ -18,18 +20,13 @@ public:
       static Board newBoard;
       return newBoard;
   }
-  char pieces[8][8];
-  Piece* blackPieces[16];
-  Piece* whitePieces[16];
+  char board[8][8];
+  vector <Piece*> whitePiecesVector;
+  vector <Piece*> blackPiecesVector;
+  //Piece* blackPieces[16];
+  //Piece* whitePieces[16];
 
-void initBoard() {
-  for (int i = 0; i < 8; i++) {
-    for (int j = 0; j < 8; j++) {
-        if (i==0) pieces[i][j] = i;
-    	pieces[i][j] = '-';
-    }
-  }
-}
+
  void printBoard() {
   std::cout << '\n';
   std::cout << "    ";
@@ -45,61 +42,66 @@ void initBoard() {
     std::cout << j<<"|  ";
     for (int i = 0; i < 8; i++)
     {
-      cout <<pieces[i][j]<<" ";
+      cout <<board[i][j]<<" ";
     }
   cout <<endl;
   }
   std::cout << "         WHITE" << '\n';
 }
 
-void fillArray(Piece* pieces[], bool black)
+void fillVector(vector <Piece*> &pieces, bool black)
  {
   for (size_t i = 0; i < 14; i++)
   {
     if (i<8) {
-      pieces[i]= new Pawn(black);
+      pieces.push_back(new Pawn(black));
     }
     if (i>=8&&i<10) {
-      pieces[i]= new Rook(black);
+       pieces.push_back(new Rook(black));
     }
     if (i>=10&&i<12) {
-      pieces[i]= new Horse(black);
+      pieces.push_back( new Horse(black));
     }
     if (i>=12&&i<14) {
-      pieces[i]= new Bishop(black);
+      pieces.push_back( new Bishop(black));
     }
   }
-  pieces[14]= new King(black);
-  pieces[15]= new Queen(black);
+  pieces.push_back( new King(black));
+  pieces.push_back( new Queen(black));
 }
 
-void writeBoard()
-{
-	  for (int i = 0; i < 16; i++) {
-		      int whiteX = whitePieces[i]->x;
-          int whiteY = whitePieces[i]->y;
-          int blackX = blackPieces[i]->x;
-          int blackY = blackPieces[i]->y;
-          pieces[whiteX][whiteY]=whitePieces[i]->figure;
-          pieces[blackX][blackY]=blackPieces[i]->figure;
+void writeBoard(vector <Piece*> &pieces )
+{   for (auto& piece : pieces)
+	  {
+		      int coorX = piece->x;
+          int coorY = piece->y;
+          board[coorX][coorY]=piece->figure;
 	  }
 }
-bool wayFree(int newPosition, Piece* pieceToMove)
-{
-
+void initBoard() {
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+    	board[i][j] = '-';
+    }
+  }
 }
 bool isEmpty(int newPosition[])
 {
-  if((pieces[newPosition[0]][newPosition[1]]) == '-'){
+  if((board[newPosition[0]][newPosition[1]]) == '-'){
    return true;
    } return false;
 }
+void upDateBoard()
+{
+  initBoard();
+  writeBoard(whitePiecesVector);
+  writeBoard(blackPiecesVector);
+}
 void startGame()
 {
-  fillArray(whitePieces, false);
-  fillArray(blackPieces, true);
-  initBoard();
-  writeBoard();
+  fillVector(whitePiecesVector, false);
+  fillVector(blackPiecesVector, true);
+  upDateBoard();
   printBoard();
 }
 
@@ -117,21 +119,20 @@ Piece* findPiece(int x, int y, bool turnBlack) {
     std::cout << "THE POSITION IS OUTSIDE THE LIMIT" << '\n'; return NULL;
     std::cout << "------------------------------" << '\n' << endl;
    }
-  if (turnBlack==true) {
-    for (size_t i = 0; i < 16; i++) {
-      if (blackPieces[i]->x==x && blackPieces[i]->y==y) return blackPieces[i];
+  if (turnBlack==true)
+  {
+    for (auto& piece: blackPiecesVector)
+      if (piece->x==x && piece->y==y) return piece;
     }
-  }
   if (turnBlack==false)
   {
-    for (size_t i = 0; i < 16; i++)
+    for (auto& piece: whitePiecesVector)
      {
-       if (whitePieces[i]->x==x && whitePieces[i]->y==y)
+       if (piece->x==x && piece->y==y)
        {
-         return whitePieces[i];
-
+         return piece;
        }
-  }
+     }
 }
   return NULL;
 }

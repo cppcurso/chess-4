@@ -65,8 +65,7 @@ void turn() {
     if (Board::getBoard().validMoment(newPosition, pieceToMove, checkTurn(plays)))
     {
       pieceToMove->move(newPosition);
-      Board::getBoard().initBoard();
-      Board::getBoard().writeBoard();
+      Board::getBoard().upDateBoard();
       Board::getBoard().printBoard();
       plays++;
       out=true;
@@ -80,9 +79,9 @@ int main()
   Board::getBoard();
   Board::getBoard().startGame();
   do
-{
+  {
   turn();
-}
-while(plays <15);
-cout<<"END"<<endl;
+  }
+  while(plays <15);
+  cout<<"END"<<endl;
 }
