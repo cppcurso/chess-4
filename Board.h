@@ -136,12 +136,12 @@ Piece* findPiece(int x, int y, bool turnBlack) {
   return NULL;
 }
 
-bool validMoment(int newPosition[], Piece* pieceToMove)
+bool validMoment(int newPosition[], Piece* pieceToMove, bool black)
 {
   if (limitsOK(newPosition[0],newPosition[1])
   && isEmpty(newPosition)
   && pieceToMove->moveOK(newPosition)
-  && checkWay( newPosition,pieceToMove))
+  && checkWay(newPosition,pieceToMove,black))
   {
   return true;
   }
@@ -151,26 +151,45 @@ bool validMoment(int newPosition[], Piece* pieceToMove)
   return false;
 }
 
-bool checkWay(int newPosition[], Piece* pieceToMove)
+bool checkWay(int newPosition[], Piece* pieceToMove, bool turn)
 {
   if (pieceToMove->figure=='H' || pieceToMove->figure=='h') return true;
   int position[2];
   position[0]=pieceToMove->x;
   position[1]=pieceToMove->y;
   while (position[0]!=newPosition[0] || position[1]!=newPosition[1] )
-  {
+{
   if (newPosition[0]>position[0]) position[0]++;
   else if(newPosition[0]<position[0]) position[0]--;
   if (newPosition[1]>position[1]) position[1]++;
   else if(newPosition[1]<position[1]) position[1]--;
-
-   if (!isEmpty(position)) {
+   if (!isEmpty(position))
+   {
+     if (pieceToMove->black==turn)
+     {
       std::cout << "------------------------------" << '\n';
       std::cout << "A PIECE CAN'T JUMP OTHER PIECES"<< '\n';
       std::cout << "------------------------------" << '\n' << endl;
+      }
+      else if (position[0]==newPosition[0]&&position[1]==newPosition[1]) // si mi destino es la pieza
+      {
+         eat(newPosition, turn);
+      }
      return false;
   }
 }
   return true;
+}
+
+void eat(int newPosition[], bool turn)
+{
+  // if (turn==true){
+  //   for (size_t i = 0; i < 16; i++) {
+  //     if (newPosition[i].x==whitePieces[i]->figure) {
+  //       std::cout << "-" << '\n';
+  //     }
+  //   }
+  //   return false;
+  // }
 }
 };

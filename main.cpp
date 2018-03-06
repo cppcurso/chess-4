@@ -62,7 +62,7 @@ void turn() {
   {
     out=false;
     getNewPosition(newPosition);
-    if (Board::getBoard().validMoment(newPosition, pieceToMove))
+    if (Board::getBoard().validMoment(newPosition, pieceToMove, checkTurn(plays)))
     {
       pieceToMove->move(newPosition);
       Board::getBoard().initBoard();
