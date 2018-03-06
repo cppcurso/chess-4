@@ -16,4 +16,7 @@ TEST_F(PawnTest, testingMovement) {
   int newPosition3[2]={9,9}; // White Pawn move to (9,9)
 	int result3 = Pawn1.moveOK(newPosition3);
 	ASSERT_FALSE(result3);
+  int newPosition4[2]={6,7}; // White Pawn move to (6,7)
+  int result4 = Pawn1.moveOK(newPosition4);
+  ASSERT_FALSE(result4);
 }
