@@ -4,6 +4,8 @@
  *  Created on: 27/02/2018
  *      Author: usuario
  */
+#include "Piece.h"
+
 short int countPawn = 0;
 
 class Pawn :  public Piece {
