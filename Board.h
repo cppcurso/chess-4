@@ -138,6 +138,7 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
 bool validMoment(int newPosition[], Piece* pieceToMove, bool black)
 {
+  return true;
   if (limitsOK(newPosition[0],newPosition[1])
   && isEmpty(newPosition)
   && pieceToMove->moveOK(newPosition)
@@ -165,7 +166,7 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
   else if(newPosition[1]<position[1]) position[1]--;
    if (!isEmpty(position))
    {
-     if (pieceToMove->black==blacks)
+     if (pieceToMove->black!=blacks)
      {
       std::cout << "------------------------------" << '\n';
       std::cout << "A PIECE CAN'T JUMP OTHER PIECES"<< '\n';
@@ -173,7 +174,11 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
       }
       else if (position[0]==newPosition[0]&&position[1]==newPosition[1]) // si mi destino es la pieza
       {
-         eat(newPosition,blacks);
+         if (blacks)
+        {
+           eat(newPosition,whitePiecesVector);
+         }
+         else  eat(newPosition,blackPiecesVector);
          return true;
       }
      return false;
@@ -182,23 +187,16 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
   return true;
 }
 
-void eat(int newPosition[], bool blacks,vector <Piece*> &whitePiecesVector, vector <Piece*> &blackPiecesVector )
-{
-vector<int>::iterator it; // Definición del iterador
-  if (blacks==true)
-  {     for (it = whitePiecesVector.begin(); it < whitePiecesVector.end(); i++)
-          if (it->x==newPosition[0]&&it->y==newPosition[1])
-            {
-                whitePiecesVector.erase(it);
-              }
-  }
-  else
-  {
-    for (it = blackPiecesVector.begin(); it < blackPiecesVector.end(); i++)
-            if (it->x==newPosition[0]&&it->y==newPosition[1])
+void eat(int newPosition[],vector <Piece*> &piecesVector)
+{ std::cout << "COMEN" << '\n';
+    Piece* a;
+    for (auto it = piecesVector.begin(); it < piecesVector.end(); it++)
+    {
+           a =*it;
+            if (a->x==newPosition[0] && a->y==newPosition[1])
               {
-                  blackPiecesVector.erase(it);
+                  piecesVector.erase(it);
                 }
-  }
+        }
 }
 };
