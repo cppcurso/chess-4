@@ -47,6 +47,7 @@ std::cout << '\n';
 
 void getNewPosition(int newPosition[])
  {
+   int pieceToMove[2];
    cout<<" X OF THE NEW POSITION"<<endl;
    cin >> newPosition[0];
    cout<<" Y OF THE NEW POSITION"<<endl;
@@ -56,11 +57,11 @@ void getNewPosition(int newPosition[])
 void turn() {
   Piece* pieceToMove;
   int newPosition[2];
-  pieceToMove = newPiece(checkTurn(plays));
   bool out=false;
   do
   {
     out=false;
+    pieceToMove = newPiece(checkTurn(plays));
     getNewPosition(newPosition);
     if (Board::getBoard().validMoment(newPosition, pieceToMove, checkTurn(plays)))
     {
