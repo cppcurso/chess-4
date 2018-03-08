@@ -16,16 +16,14 @@ class Board {
   Board(const Board& s);
   void operator=(const Board& s);
 public:
-  static Board& getBoard() {
+  static Board& getBoard()
+  {
       static Board newBoard;
       return newBoard;
   }
   char board[8][8];
   vector <Piece*> whitePiecesVector;
   vector <Piece*> blackPiecesVector;
-  //Piece* blackPieces[16];
-  //Piece* whitePieces[16];
-
 
  void printBoard() {
   std::cout << '\n';
@@ -75,6 +73,7 @@ void writeBoard(vector <Piece*> &pieces )
 	  {
 		      int coorX = piece->x;
           int coorY = piece->y;
+          std::cout << piece->x<<piece->y<<piece->figure << '\n';
           board[coorX][coorY]=piece->figure;
 	  }
 }

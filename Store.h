@@ -32,18 +32,20 @@ static void saveBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces 
   static void loadBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces)
   {
     int sizeOfWhites, sizeOfBlacks;
-    Piece* piece;
     ifstream file("Savedplay", ios::binary);
-    file.read((char *) &sizeOfWhites, sizeof(int));
+    file.read((char *)&sizeOfWhites, sizeof(int));
    for (size_t i = 0; i <sizeOfWhites; i++)
     {
-     file.read((char *)&piece, sizeof(Piece));
+      Piece* piece=new Pawn(true);
+     file.read((char *)piece, sizeof(Piece));
      whitePieces.push_back(piece);
+
     }
    file.read((char *) &sizeOfBlacks, sizeof(int));
    for (size_t i = 0; i <sizeOfBlacks; i++)
     {
-     file.read((char *)&piece, sizeof(Piece));
+      Piece* piece=new Rook(true);
+     file.read((char *)piece, sizeof(Piece));
      blackPieces.push_back(piece);
     }
   }
