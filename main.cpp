@@ -1,5 +1,6 @@
 #include <iostream>
 #include"Board.h"
+#include"Store.h"
 
 //_____CHESS_____//
 
@@ -55,6 +56,7 @@ void getNewPosition(int newPosition[])
  }
 
 void turn() {
+
   Piece* pieceToMove;
   int newPosition[2];
   bool out=false;
@@ -69,6 +71,8 @@ void turn() {
       Board::getBoard().upDateBoard();
       Board::getBoard().printBoard();
       plays++;
+      Store::saveBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector);
+      Store::loadBoard();
       out=true;
     }
    }
