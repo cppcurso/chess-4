@@ -73,7 +73,6 @@ void writeBoard(vector <Piece*> &pieces )
 	  {
 		      int coorX = piece->x;
           int coorY = piece->y;
-          std::cout << piece->x<<piece->y<<piece->figure << '\n';
           board[coorX][coorY]=piece->figure;
 	  }
 }
@@ -135,11 +134,9 @@ Piece* findPiece(int x, int y, bool turnBlack) {
 }
 bool validMoment(int newPosition[], Piece* pieceToMove, bool black)
 {
-  return true;
   if (limitsOK(newPosition[0],newPosition[1])
-  && isEmpty(newPosition)
   && pieceToMove->moveOK(newPosition)
-  && checkWay(newPosition,pieceToMove,black))
+  &&checkWay(newPosition,pieceToMove,black))
   {
   return true;
   }
@@ -171,27 +168,34 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
       }
       else if (position[0]==newPosition[0]&&position[1]==newPosition[1]) // si mi destino es la pieza
       {
+          if ((pieceToMove->figure=='P'||pieceToMove->figure=='p')
+          && pieceToMove->x==newPosition[0]) return false;
          if (blacks)
         {
            eat(newPosition,whitePiecesVector);
+           std::cout << "Comen negras" << '\n';
          }
-         else  eat(newPosition,blackPiecesVector);
+         else  {
+           eat(newPosition,blackPiecesVector);
+           std::cout << "Comen blancas" << '\n';
+         }
          return true;
       }
      return false;
   }
+  else if ((pieceToMove->figure=='P'||pieceToMove->figure=='p') && pieceToMove->x!=newPosition[0]) return false;
 }
   return true;
 }
-
 void eat(int newPosition[],vector <Piece*> &piecesVector)
-{ std::cout << "COMEN" << '\n';
-    Piece* a;
+{
+  std::cout << "COMEN" << '\n';
+Piece* a;
     for (auto it = piecesVector.begin(); it < piecesVector.end(); it++)
-    {
-           a =*it;
+    {       a=*it;
             if (a->x==newPosition[0] && a->y==newPosition[1])
               {
+                std::cout << "DIED" << '\n';
                   piecesVector.erase(it);
                 }
         }

@@ -13,7 +13,7 @@ class Pawn :  public Piece {
 public:
 	bool moveOK(int newPosition[])
 	 {
-		if (newPosition[0]!=this->x) return false;
+		if (newPosition[0]-this->x==1||newPosition[0]-this->x==-1) return true;
 		if (black==false && (newPosition[1]-this->y)==-1) return true;
 		if (black==true && (newPosition[1]-this->y)==1) return true;
 

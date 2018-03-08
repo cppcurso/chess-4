@@ -7,6 +7,7 @@
 
 #ifndef PIECE_H_
 #define PIECE_H_
+#include <vector>
 
 class Piece {
 public:
@@ -19,6 +20,7 @@ public:
 		this->x=newPosition[0];
 		this->y=newPosition[1];
 	}
+
 };
 
 #endif /* PIECE_H_ */

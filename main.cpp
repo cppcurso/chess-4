@@ -80,7 +80,7 @@ void turn() {
 int main()
 {
   char ans;
-  std::cout << "Restart Game? Y/N" << '\n';
+  std::cout << "Resume Game? Y/N" << '\n';
   cin>>ans;
   if(ans=='Y')
   {
