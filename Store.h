@@ -11,26 +11,40 @@ public:
 
 static void saveBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces )
   {
+
   ofstream file("Savedplay", ios::binary);
-  // for (auto& piece: whitePieces)
-  // {
-  //     file.write((char*) piece, sizeof(Piece));
-  //
-  //   }
-  //   for (auto& piece: blackPieces)
-  //   {
-  //       file.write((char*) piece, sizeof(Piece));
-  //   }
-  file.write((char*)sizeof(whitePieces), sizeof(int));
-  file.write((char*)whitePieces[0], sizeof(Piece));
+
+  int whiteSize=whitePieces.size();
+  int blackSize=blackPieces.size();
+  file.write((char*)&whiteSize, sizeof(int));
+  for (auto& piece: whitePieces)
+  {
+      file.write((char*) piece, sizeof(Piece));
+
+  }
+  file.write((char*)&blackSize, sizeof(int));
+    for (auto& piece: blackPieces)
+    {
+        file.write((char*) piece, sizeof(Piece));
+    }
   }
 
-  static void loadBoard()
+  static void loadBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces)
   {
-    int sizeOfWhit
+    int sizeOfWhites, sizeOfBlacks;
     Piece* piece;
     ifstream file("Savedplay", ios::binary);
-          file.read((char *) piece, sizeof(Piece));
-        std::cout << piece->figure<<piece->x<<piece->y << '\n';
+    file.read((char *) &sizeOfWhites, sizeof(int));
+   for (size_t i = 0; i <sizeOfWhites; i++)
+    {
+     file.read((char *)&piece, sizeof(Piece));
+     whitePieces.push_back(piece);
+    }
+   file.read((char *) &sizeOfBlacks, sizeof(int));
+   for (size_t i = 0; i <sizeOfBlacks; i++)
+    {
+     file.read((char *)&piece, sizeof(Piece));
+     blackPieces.push_back(piece);
+    }
   }
 };

@@ -101,8 +101,6 @@ void startGame()
 {
   fillVector(whitePiecesVector, false);
   fillVector(blackPiecesVector, true);
-  upDateBoard();
-  printBoard();
 }
 
 bool limitsOK(int x,int y){

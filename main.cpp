@@ -62,17 +62,16 @@ void turn() {
   bool out=false;
   do
   {
+    Board::getBoard().upDateBoard();
+    Board::getBoard().printBoard();
     out=false;
     pieceToMove = newPiece(checkTurn(plays));
     getNewPosition(newPosition);
     if (Board::getBoard().validMoment(newPosition, pieceToMove, checkTurn(plays)))
     {
       pieceToMove->move(newPosition);
-      Board::getBoard().upDateBoard();
-      Board::getBoard().printBoard();
       plays++;
       Store::saveBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector);
-      Store::loadBoard();
       out=true;
     }
    }
@@ -80,8 +79,17 @@ void turn() {
 }
 int main()
 {
-  Board::getBoard();
+  char ans;
+  std::cout << "Restart Game? Y/N" << '\n';
+  cin>>ans;
+  if(ans=='Y')
+  {
+  Store::loadBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector);
+  }
+  else if(ans=='N')
+  {
   Board::getBoard().startGame();
+    }
   do
   {
   turn();
