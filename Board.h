@@ -10,12 +10,15 @@
  //for (auto& *Piece: pieces)
 using namespace std;
 
+
 class Board {
 
-  Board() {};
+  Board() { end=false;}
   Board(const Board& s);
   void operator=(const Board& s);
 public:
+  bool end;
+
   static Board& getBoard()
   {
       static Board newBoard;
@@ -172,12 +175,11 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
           && pieceToMove->x==newPosition[0]) return false;
          if (blacks)
         {
-           eat(newPosition,whitePiecesVector);
-           std::cout << "Comen negras" << '\n';
+          end=eat(newPosition,whitePiecesVector);
          }
          else  {
-           eat(newPosition,blackPiecesVector);
-           std::cout << "Comen blancas" << '\n';
+           end=eat(newPosition,blackPiecesVector);
+
          }
          return true;
       }
@@ -187,16 +189,15 @@ bool checkWay(int newPosition[], Piece* pieceToMove, bool blacks)
 }
   return true;
 }
-void eat(int newPosition[],vector <Piece*> &piecesVector)
+bool eat(int newPosition[],vector <Piece*> &piecesVector)
 {
-  std::cout << "COMEN" << '\n';
 Piece* a;
     for (auto it = piecesVector.begin(); it < piecesVector.end(); it++)
     {       a=*it;
             if (a->x==newPosition[0] && a->y==newPosition[1])
               {
-                std::cout << "DIED" << '\n';
                   piecesVector.erase(it);
+                  if (a->figure=='K'||a->figure=='k') return true;
                 }
         }
 }

@@ -77,6 +77,14 @@ void turn() {
    }
     while(out==false);
 }
+void printWinner(bool blacks)
+  {
+    if (blacks==false)
+    {
+      std::cout << "WHITES ARE THE WINNERS" << '\n';
+    }
+       else std::cout << "BLACKS ARE THE WINNERS" << '\n';
+  }
 int main()
 {
   char ans;
@@ -88,12 +96,12 @@ int main()
   }
   else if(ans=='N')
   {
-  Board::getBoard().startGame();
+    Board::getBoard().startGame();
   }
   do
   {
-  turn();
+    turn();
   }
-  while(plays < 1000);
-  cout<<"END"<<endl;
+  while(Board::getBoard().end!=true);
+  printWinner(checkTurn(plays--));
 }
