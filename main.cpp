@@ -89,11 +89,11 @@ int main()
   else if(ans=='N')
   {
   Board::getBoard().startGame();
-    }
+  }
   do
   {
   turn();
   }
-  while(plays <15);
+  while(plays < 1000);
   cout<<"END"<<endl;
 }
