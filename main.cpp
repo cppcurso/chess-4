@@ -71,7 +71,7 @@ void turn() {
     {
       pieceToMove->move(newPosition);
       plays++;
-      Store::saveBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector);
+      Store::saveBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector,plays);
       out=true;
     }
    }
@@ -84,7 +84,7 @@ int main()
   cin>>ans;
   if(ans=='Y')
   {
-  Store::loadBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector);
+    plays=Store::loadBoard(Board::getBoard().whitePiecesVector,Board::getBoard().blackPiecesVector);
   }
   else if(ans=='N')
   {

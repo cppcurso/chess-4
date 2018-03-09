@@ -1,4 +1,5 @@
 
+
 #include "Piece.h"
 #include <vector>
 #include <fstream>
@@ -9,13 +10,13 @@ class Store
 public:
 
 
-static void saveBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces )
+static void saveBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces, unsigned int plays)
   {
-
+    int whiteSize=whitePieces.size();
+    int blackSize=blackPieces.size();
+    
   ofstream file("Savedplay", ios::binary);
-
-  int whiteSize=whitePieces.size();
-  int blackSize=blackPieces.size();
+  file.write((char*)&plays, sizeof(int));
   file.write((char*)&whiteSize, sizeof(int));
   for (auto& piece: whitePieces)
   {
@@ -29,10 +30,12 @@ static void saveBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces 
     }
   }
 
-  static void loadBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces)
+   static unsigned int loadBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces)
   {
-    int sizeOfWhites, sizeOfBlacks;
+    int sizeOfWhites, sizeOfBlacks, plays;
+    bool turn;
     ifstream file("Savedplay", ios::binary);
+    file.read((char *)&plays, sizeof(int));
     file.read((char *)&sizeOfWhites, sizeof(int));
    for (size_t i = 0; i <sizeOfWhites; i++)
     {
@@ -48,5 +51,6 @@ static void saveBoard(vector <Piece*> &whitePieces,vector <Piece*> &blackPieces 
      file.read((char *)piece, sizeof(Piece));
      blackPieces.push_back(piece);
     }
+    return plays;
   }
 };
